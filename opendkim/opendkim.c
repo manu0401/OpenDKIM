@@ -1089,7 +1089,7 @@ dkimf_get_omitheaders(struct dkimf_config *conf, const char *rcpt,
 
 	strlcpy(tmp, rcpt, sizeof(tmp));
 	status = dkim_mail_parse(tmp, &user, &domain);
-	if (status != 0)
+	if (status != 0 || user == NULL || domain == NULL)
 	{
 		return -1;
 	}
